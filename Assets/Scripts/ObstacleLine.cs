@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class ObstacleLine : MonoBehaviour
 {
-    public Transform sprite;
     public Transform obstacle;
+    public Transform sprite;
 
     [SerializeField] private bool vertical = true;
-    [SerializeField] private float speed = 1; //TODO make it const/same for across every line obstacle?
+    [SerializeField] private float speed = 1;
     [SerializeField] private float length;
 
     private float position;
@@ -23,8 +23,8 @@ public class ObstacleLine : MonoBehaviour
     private void SetSpriteSize()
     {
         Vector3 scale = sprite.transform.localScale;
-        if (vertical) scale.x = length;
-        else scale.y = length;
+        if (vertical) { scale.x = length; scale.y = transform.localScale.y / 4; }
+        else { scale.y = length; scale.x = transform.localScale.x / 4; }
         sprite.transform.localScale = scale;
     }
 
