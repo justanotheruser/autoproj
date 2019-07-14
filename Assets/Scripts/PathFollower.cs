@@ -6,7 +6,7 @@ public class PathFollower : MonoBehaviour
 {
     private List<TouchDragPath.TouchDragPathNode> nodes;
 
-    private bool moving = false;
+    private bool moving = false; //TODO private?
 
     private int currentNode;
     private float currentDelay;
@@ -25,6 +25,9 @@ public class PathFollower : MonoBehaviour
         if (moving)
         {
             timer += Time.deltaTime;
+
+            transform.position = Vector3.Slerp(currentStart, currentTarget, timer / currentDelay);
+
             if (timer > currentDelay)
             {
                 timer -= currentDelay;
@@ -41,7 +44,7 @@ public class PathFollower : MonoBehaviour
                 }
             }
 
-            transform.position = Vector3.Lerp(currentStart, currentTarget, timer / currentDelay);
+
         }
     }
 
@@ -49,6 +52,13 @@ public class PathFollower : MonoBehaviour
     {
         this.nodes = nodes;
         moving = true;
+        currentNode = 0;
+    }
+
+    public void StopMotion()
+    {
+        moving = false;
+        nodes.Clear();
         currentNode = 0;
     }
 }

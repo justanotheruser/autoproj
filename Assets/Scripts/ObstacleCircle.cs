@@ -10,7 +10,7 @@ public class ObstacleCircle : MonoBehaviour
 
     [SerializeField] private bool clockwise = true;
     [SerializeField] private float speed = 2f; //in radians
-    [SerializeField] private float radius;
+    [SerializeField] private float radius = 1;
 
     private float angle;
 

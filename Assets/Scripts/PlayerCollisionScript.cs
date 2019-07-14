@@ -1,25 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerCollisionScript : MonoBehaviour
 {
+    public UnityEvent onDeathEvent;
+    public UnityEvent onCollisionExitEvent; //TODO temp
 
-    private Renderer renderer; //TODO temp
-
-    private void Start()
+    private void OnCollisionEnter(Collision collision)
     {
-        renderer = GetComponent<Renderer>();
-    }
+        //TODO fix this asap
+        Vector3 pos = GameObject.FindGameObjectWithTag("Respawn").transform.position;
+        pos.z = 0;
+        transform.position = pos; 
 
-    private void OnCollisionStay(Collision collision)
-    {
-        renderer.material.SetColor("_BaseColor", Color.red);
+        onDeathEvent.Invoke();
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        renderer.material.SetColor("_BaseColor", Color.green);
+        onCollisionExitEvent.Invoke();
     }
 
 
