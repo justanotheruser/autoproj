@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowPath : MonoBehaviour
+public class PathFollower : MonoBehaviour
 {
     private List<TouchDragPath.TouchDragPathNode> nodes;
 
@@ -11,13 +11,13 @@ public class FollowPath : MonoBehaviour
     private int currentNode;
     private float currentDelay;
     private Vector3 currentTarget;
-    private Vector3 startPosition;
+    private Vector3 currentStart;
 
     private float timer;
 
     private void Start()
     {
-        startPosition = transform.position;
+        currentStart = transform.position;
     }
 
     void Update()
@@ -35,13 +35,13 @@ public class FollowPath : MonoBehaviour
                 }
                 else
                 {
-                    startPosition = currentTarget;
+                    currentStart = currentTarget;
                     currentDelay = nodes[currentNode].delay;
                     currentTarget = nodes[currentNode].position;
                 }
             }
 
-            transform.position = Vector3.Lerp(startPosition, currentTarget, timer / currentDelay);
+            transform.position = Vector3.Lerp(currentStart, currentTarget, timer / currentDelay);
         }
     }
 
