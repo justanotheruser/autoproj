@@ -13,6 +13,7 @@ public class LevelManager : MonoBehaviour
     {
         Next();
     }
+
     public void Next()
     {
         currentIndex++;

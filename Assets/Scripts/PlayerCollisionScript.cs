@@ -6,22 +6,15 @@ using UnityEngine.Events;
 public class PlayerCollisionScript : MonoBehaviour
 {
     public UnityEvent onDeathEvent;
-    public UnityEvent onCollisionExitEvent; //TODO temp
 
     private void OnCollisionEnter(Collision collision)
     {
-        //TODO fix this asap
-        Vector3 pos = GameObject.FindGameObjectWithTag("Respawn").transform.position;
-        pos.z = 0;
-        transform.position = pos; 
+        //TODO fix asap
+        Vector3 pos = GameObject.FindGameObjectWithTag("Respawn").transform.position; //KILL
+        pos.z = 0;  //ME
+        transform.position = pos; //PLS
 
         onDeathEvent.Invoke();
     }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        onCollisionExitEvent.Invoke();
-    }
-
 
 }

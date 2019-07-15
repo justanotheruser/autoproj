@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class PathFollower : MonoBehaviour
 {
-    private List<TouchDragPath.TouchDragPathNode> nodes;
-
-    private bool moving = false; //TODO private?
+    private List<DragController.Node> nodes = new List<DragController.Node>();
 
     private int currentNode;
     private float currentDelay;
@@ -20,12 +18,11 @@ public class PathFollower : MonoBehaviour
         currentStart = transform.position;
     }
 
-    void Update()
+    private void Update()
     {
-        if (moving)
+        if (nodes.Count > 0)
         {
             timer += Time.deltaTime;
-
             transform.position = Vector3.Slerp(currentStart, currentTarget, timer / currentDelay);
 
             if (timer > currentDelay)
@@ -33,9 +30,7 @@ public class PathFollower : MonoBehaviour
                 timer -= currentDelay;
                 currentNode++;
                 if (currentNode > nodes.Count - 1)
-                {
-                    moving = false;
-                }
+                    StopMotion();
                 else
                 {
                     currentStart = currentTarget;
@@ -43,22 +38,17 @@ public class PathFollower : MonoBehaviour
                     currentTarget = nodes[currentNode].position;
                 }
             }
-
-
         }
     }
 
-    public void SetNodes(List<TouchDragPath.TouchDragPathNode> nodes)
+    public void SetNodes(List<DragController.Node> nodes)
     {
-        this.nodes = nodes;
-        moving = true;
         currentNode = 0;
+        this.nodes = new List<DragController.Node>(nodes);
     }
 
     public void StopMotion()
     {
-        moving = false;
         nodes.Clear();
-        currentNode = 0;
     }
 }
