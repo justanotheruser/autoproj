@@ -44,8 +44,8 @@ public class ObstacleLine : MonoBehaviour
         }
 
         Vector3 obstaclePosition = transform.position;
-        if (vertical) obstaclePosition.x = position;
-        else obstaclePosition.y = position;
+        if (vertical) obstaclePosition.x += position;
+        else obstaclePosition.y += position;
         obstacle.position = obstaclePosition;
     }
 
