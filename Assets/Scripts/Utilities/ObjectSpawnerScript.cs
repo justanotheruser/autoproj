@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class ObjectSpawnerScript : MonoBehaviour
 {
-
     public GameObject[] objects;
 
     [HideInInspector] public Transform levelHolder;

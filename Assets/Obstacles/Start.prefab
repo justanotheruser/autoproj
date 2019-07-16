@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 163765065624798941}
   - component: {fileID: 163765065624798943}
   - component: {fileID: 163765065624798940}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: Start
-  m_TagString: Untagged
+  m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,8 +119,8 @@ GameObject:
   m_Component:
   - component: {fileID: 163765065901842254}
   - component: {fileID: 163765065901842255}
-  m_Layer: 12
-  m_Name: New Sprite
+  m_Layer: 11
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
