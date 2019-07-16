@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] private GameObject[] levels;
+   public GameObject[] levels;
 
     private int currentIndex = -1;
     private GameObject currentLevel;

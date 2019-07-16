@@ -9,6 +9,14 @@ public class ObjectSpawnerScript : MonoBehaviour
 
     [HideInInspector] public Transform levelHolder;
 
+
+    [MenuItem("WTF/Lock Inspector &q")]
+    public static void UnlockInspector()
+    {
+        ActiveEditorTracker.sharedTracker.isLocked = !ActiveEditorTracker.sharedTracker.isLocked;
+        Debug.Log(ActiveEditorTracker.sharedTracker.isLocked ? "<color=red>Locked</color>" : "<color=green>Unlocked</color>");
+    }
+
     public void CreateHolder()
     {
         GameObject go = new GameObject("Level");

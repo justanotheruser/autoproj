@@ -69,7 +69,7 @@ public class DragController : MonoBehaviour
     private void TouchStarted(Vector3 touchPoint)
     {
         dragging = IsTouchOverPlayer(touchPoint);
-        Debug.Log("Touch started " + (dragging ? "<color=green>over</color>" : "<color=red>OFF</color>") + " player position");
+        //Debug.Log("Touch started " + (dragging ? "<color=green>over</color>" : "<color=red>OFF</color>") + " player position");
 
         if (dragging)
             ResetNodes();
@@ -77,11 +77,12 @@ public class DragController : MonoBehaviour
 
     private bool IsTouchOverPlayer(Vector3 touchPoint)
     {
-        //TODO fix asap
-        return true;
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        return Physics.Raycast(ray, out hit, player.gameObject.layer);
+        //TODO replace for raycast?
+        return player.TouchOver;
+
+        //Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        //RaycastHit hit;
+        //return Physics.Raycast(ray, out hit, player.gameObject.layer);
 
     }
 

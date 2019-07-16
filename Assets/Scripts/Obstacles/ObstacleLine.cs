@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[SelectionBase]
 public class ObstacleLine : MonoBehaviour
 {
     public Transform obstacle;
@@ -10,7 +11,7 @@ public class ObstacleLine : MonoBehaviour
 
     [SerializeField] private bool vertical = true;
     [SerializeField] private float speed = 1;
-    [SerializeField] private float length;
+    [SerializeField] private float length = 3;
 
     private float position;
     private bool movingRight = true;

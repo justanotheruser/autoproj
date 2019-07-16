@@ -13,6 +13,9 @@ public class PathFollower : MonoBehaviour
 
     private float timer;
 
+
+    public bool TouchOver { get; private set; }
+
     private void Start()
     {
         currentStart = transform.position;
@@ -50,5 +53,15 @@ public class PathFollower : MonoBehaviour
     public void StopMotion()
     {
         nodes.Clear();
+    }
+
+
+    private void OnMouseEnter()
+    {
+        TouchOver = true;
+    }
+    private void OnMouseExit()
+    {
+        TouchOver = false;
     }
 }
