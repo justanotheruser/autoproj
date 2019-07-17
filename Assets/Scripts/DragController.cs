@@ -6,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class DragController : MonoBehaviour
 {
+    public static DragController instance;
+
     public struct Node
     {
         public readonly float delay;
@@ -18,8 +20,9 @@ public class DragController : MonoBehaviour
         }
     }
 
-    public PathFollower player;
+    public PathFollower Player { set { _player = value; } }
 
+    private PathFollower _player;
     private LineRenderer lineRenderer;
     private Camera cam;
 
@@ -29,6 +32,16 @@ public class DragController : MonoBehaviour
     private bool dragging = false;
     private float timer;
 
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+    
     private void Start()
     {
         cam = Camera.main;
@@ -78,7 +91,7 @@ public class DragController : MonoBehaviour
     private bool IsTouchOverPlayer(Vector3 touchPoint)
     {
         //TODO replace for raycast?
-        return player.TouchOver;
+        return _player.TouchOver;
 
         //Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         //RaycastHit hit;
@@ -92,13 +105,13 @@ public class DragController : MonoBehaviour
         Nodes.Clear();
 
         lineRenderer.positionCount = 0;
-        CreateNode(player.transform.position);
+        CreateNode(_player.transform.position);
     }
 
     private void TouchFinished()
     {
         if (dragging)
-            player.SetNodes(Nodes);
+            _player.SetNodes(Nodes);
         dragging = false;
     }
 

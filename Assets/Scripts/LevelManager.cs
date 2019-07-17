@@ -16,10 +16,13 @@ public class LevelManager : MonoBehaviour
             Debug.LogError("No checkpoint for level are set");
 
         currentCheckpoint = checkpoints[0];
+        // Enable script for drawing path
+        DragController.instance.Player = player.GetComponent<PathFollower>();
     }
 
     void Start()
     {
+        Debug.Log(string.Format("sets player to {0}", currentCheckpoint.transform.position));
         player.transform.position = currentCheckpoint.transform.position;
     }
 }
