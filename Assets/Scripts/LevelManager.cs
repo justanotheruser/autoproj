@@ -2,24 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// This script sets up and manages single level
 public class LevelManager : MonoBehaviour
 {
-   public GameObject[] levels;
+    public GameObject player;
+    public GameObject[] checkpoints;
 
-    private int currentIndex = -1;
-    private GameObject currentLevel;
+    private GameObject currentCheckpoint;
 
-    private void Start()
+    void Awake()
     {
-        Next();
+        if (checkpoints == null || checkpoints.Length == 0)
+            Debug.LogError("No checkpoint for level are set");
+
+        currentCheckpoint = checkpoints[0];
     }
 
-    public void Next()
+    void Start()
     {
-        currentIndex++;
-        currentIndex %= levels.Length;
-
-        Destroy(currentLevel);
-        currentLevel = Instantiate(levels[currentIndex], transform);
+        player.transform.position = currentCheckpoint.transform.position;
     }
 }

@@ -25,7 +25,7 @@ public class DragController : MonoBehaviour
 
     public List<Node> Nodes { get; private set; } = new List<Node>();
 
-    [SerializeField] private float distanceInterval = 0.1f;
+    [SerializeField] private readonly float distanceInterval = 0.1f;
     private bool dragging = false;
     private float timer;
 
@@ -69,7 +69,7 @@ public class DragController : MonoBehaviour
     private void TouchStarted(Vector3 touchPoint)
     {
         dragging = IsTouchOverPlayer(touchPoint);
-        //Debug.Log("Touch started " + (dragging ? "<color=green>over</color>" : "<color=red>OFF</color>") + " player position");
+        Debug.Log("Touch started " + (dragging ? "<color=green>over</color>" : "<color=red>OFF</color>") + " player position");
 
         if (dragging)
             ResetNodes();

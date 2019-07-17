@@ -5,11 +5,11 @@ using UnityEngine;
 [SelectionBase]
 public class ObstacleFinish : MonoBehaviour
 {
-    [SerializeField] private LevelManager levelManager;
+    [SerializeField] private LevelLoader levelManager;
 
     private void Start()
     {
-        levelManager = GameObject.FindObjectOfType<LevelManager>(); //TODO how to avoid this?
+        levelManager = GameObject.FindObjectOfType<LevelLoader>(); //TODO how to avoid this?
     }
 
     private void OnCollisionEnter(Collision collision)
