@@ -19,10 +19,11 @@ public class DragController : MonoBehaviour
             this.position = position;
         }
     }
+    public LevelManager LevelMgr { set { levelMgr = value; } }
+    public Vector3 StartPosition { set { startPos = value; } }
 
-    public PathFollower Player { set { _player = value; } }
-
-    private PathFollower _player;
+    private Vector3 startPos;
+    private LevelManager levelMgr;
     private LineRenderer lineRenderer;
     private Camera cam;
 
@@ -50,6 +51,9 @@ public class DragController : MonoBehaviour
 
     private void Update()
     {
+        if (levelMgr == null)
+            return;
+
         timer += Time.deltaTime;
 
         Vector3? touchPoint = GetTouchPoint();
@@ -90,13 +94,11 @@ public class DragController : MonoBehaviour
 
     private bool IsTouchOverPlayer(Vector3 touchPoint)
     {
+        return levelMgr.IsTouchOverPlayer(touchPoint);
         //TODO replace for raycast?
-        return _player.TouchOver;
-
         //Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         //RaycastHit hit;
         //return Physics.Raycast(ray, out hit, player.gameObject.layer);
-
     }
 
     private void ResetNodes()
@@ -105,13 +107,14 @@ public class DragController : MonoBehaviour
         Nodes.Clear();
 
         lineRenderer.positionCount = 0;
-        CreateNode(_player.transform.position);
+        CreateNode(startPos);
     }
 
     private void TouchFinished()
     {
+        Debug.Log("Touch finished");
         if (dragging)
-            _player.SetNodes(Nodes);
+            levelMgr.SetNodes(Nodes);
         dragging = false;
     }
 

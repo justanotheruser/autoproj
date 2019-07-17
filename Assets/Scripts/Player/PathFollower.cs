@@ -13,9 +13,6 @@ public class PathFollower : MonoBehaviour
 
     private float timer;
 
-
-    public bool TouchOver { get; private set; }
-
     private void Start()
     {
         currentStart = transform.position;
@@ -26,7 +23,7 @@ public class PathFollower : MonoBehaviour
         if (nodes.Count > 0)
         {
             timer += Time.deltaTime;
-            transform.position = Vector3.Slerp(currentStart, currentTarget, timer / currentDelay);
+            transform.position = Vector3.Lerp(currentStart, currentTarget, timer / currentDelay);
 
             if (timer > currentDelay)
             {
@@ -53,15 +50,5 @@ public class PathFollower : MonoBehaviour
     public void StopMotion()
     {
         nodes.Clear();
-    }
-
-
-    private void OnMouseEnter()
-    {
-        TouchOver = true;
-    }
-    private void OnMouseExit()
-    {
-        TouchOver = false;
     }
 }

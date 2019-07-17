@@ -11,11 +11,12 @@ GameObject:
   - component: {fileID: 5356271901596080307}
   - component: {fileID: 5356271901596080308}
   - component: {fileID: 5356271901596080309}
-  - component: {fileID: 5356271901596080311}
-  - component: {fileID: 5356271901596080306}
   - component: {fileID: 5356271901596080305}
   - component: {fileID: 5356271901596080310}
   - component: {fileID: 623301196}
+  - component: {fileID: 5356271901596080311}
+  - component: {fileID: 5356271901596080306}
+  - component: {fileID: 1498646667629834627}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -82,46 +83,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &5356271901596080311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5356271901596080312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c8bf22159102a0499d0299353096896, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5356271901596080306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5356271901596080312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7256e08a0d2d62e40902de51ccc2025f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onDeathEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5356271901596080311}
-        m_MethodName: StopMotion
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!54 &5356271901596080305
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -246,3 +207,39 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &5356271901596080311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5356271901596080312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c8bf22159102a0499d0299353096896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5356271901596080306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5356271901596080312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7256e08a0d2d62e40902de51ccc2025f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1498646667629834627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5356271901596080312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab9114c198affbb44b7ac6ed4d7d89fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
